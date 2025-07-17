@@ -29,6 +29,7 @@ function nextQuestion() {
     document.getElementById("kanji").style.display = "none";
     document.getElementById("score").innerText = `Game Selesai！Skor: ${score}`;
     document.getElementById("wrong").innerText = `Jumlah Salah: ${wrongCount}`;
+    document.getElementById("restart-container").classList.remove("hidden");
     return;
   }
   const q = questions[currentIndex];
@@ -131,3 +132,16 @@ document.addEventListener('touchend', (e) => {
         }
     }
 }, false);
+
+function resetGame() {
+  currentIndex = 0;
+  score = 0;
+  wrongCount = 0;
+  document.getElementById("kanji").style.display = "block";
+  document.getElementById("score").innerText = "Skor: 0";
+  document.getElementById("wrong").innerText = "Salah: 0";
+  document.getElementById("restart-container").classList.add("hidden");
+  loadQuestions();
+}
+
+document.getElementById("restart-btn").addEventListener("click", resetGame);
