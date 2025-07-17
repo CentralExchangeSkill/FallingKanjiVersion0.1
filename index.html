@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kanji Falling Game</title>
+  <script src="script.js" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .game-container {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      border: 2px solid #333;
+      margin: 20px auto;
+      background-color: #f8fafc;
+      overflow: hidden;
+    }
+    .falling-kanji {
+      width: 100px;
+      height: 100px;
+      background-color: #f5f5f0; /* warna bola */
+      border-radius: 50%; /* membuat bentuk jadi bulat */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      font-weight: bold;
+      color: #0c0c0c; /* warna teks */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      position: absolute;
+      z-index: 1;
+    }
+    .answer-bar {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      background-color: #e2e8f0;
+      padding: 10px 0;
+    }
+    .answer-slot {
+      width: 33%;
+      text-align: center;
+      font-weight: bold;
+    }
+    .slot {
+      width: 100px;
+      height: 100px;
+      margin: 0 5px;
+      background-color: #f8fafc; /* Warna terang */
+      border: 4px solid #7c3aed; /* Warna ungu */
+      border-bottom-width: 12px; /* Tebal di bawah */
+      border-radius: 0 0 20px 20px; /* Hanya bulat di bawah */
+      position: relative;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-align: center;
+      line-height: 70px;
+      font-weight: bold;
+      color: #1f2937; /* Teks hitam */
+      font-size: 10px;
+      z-index: 2;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-center">
+  <h1 class="text-3xl font-bold mt-5">Kanji Falling Game</h1>
+  <div id="score" class="text-xl mt-2 mb-4">Skor: 0</div><div id="wrong">Salah: 0</div>
+  <div class="game-container" id="game-area">
+    <div class="falling-kanji" id="kanji" style="top: 0; left: 33%;">?</div>
+    <div class="answer-bar" id="answer-bar">
+      <div class="slot" id="slot-0"></div>
+      <div class="slot" id="slot-1"></div>
+      <div class="slot" id="slot-2"></div>
+    </div>
+    <div id="on-screen-controls" class="fixed bottom-4 left-0 right-0 flex justify-center gap-4">
+      <button id="left-btn" class="bg-gray-700 text-white p-3 rounded-full text-2xl">←</button>
+      <button id="down-btn" class="bg-gray-700 text-white p-3 rounded-full text-2xl">↓</button>
+      <button id="right-btn" class="bg-gray-700 text-white p-3 rounded-full text-2xl">→</button>
+    </div>
+  </div>
+</body>
+</html>
